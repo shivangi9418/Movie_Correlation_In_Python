@@ -20,7 +20,7 @@ plt.ylabel('Gross Earnings')
 
 #Plot budget vs gross using seaborn
 sns.regplot(x='budget',y='gross',data=df,scatter_kws={'color':'red'},line_kws={'color':'purple'})
-# plt.show()
+plt.show()
 
 #Let's start looking at correlation
 
@@ -42,9 +42,9 @@ plt.show()
 #Unstacking and forming pairs
 correlation_mat=bdf.corr()
 corr_pairs=correlation_mat.unstack()
-# print(corr_pairs)
+print(corr_pairs)
 sorted_pairs=corr_pairs.sort_values()
-# print(sorted_pairs)
+print(sorted_pairs)
 
 #Looking for high correlation pairs
 high_corr=sorted_pairs[(sorted_pairs)>0.5]
