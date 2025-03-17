@@ -53,25 +53,3 @@ print(high_corr)
 #Votes and Budget have the highest correlation to gross earnings
 
 
-
-
-
-# #Looks at company
-# # print(df.head())
-# cdf=df.groupby('company').agg(
-#     gross_mean=('gross','mean')
-# )
-# cdf['company_rank']=cdf.rank(ascending=False)
-# cdf=cdf.sort_values('company_rank').reset_index()
-
-# # #ANOVA Test
-# # model=sm.ols('gross ~ C(company)',data=df).fit()
-# # anova_table=sa.stats.anova_lm(model,typ=2)
-# # print(anova_table)
-
-
-# sns.heatmap(correlation_matrix,annot=True)
-# plt.title('Correlation Matric for Categorical Features')
-# plt.xlabel('Movie Features')
-# plt.ylabel('Movie Features')
-# plt.show()
