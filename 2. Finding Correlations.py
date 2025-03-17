@@ -28,6 +28,7 @@ bdf=df.select_dtypes(include=[int,float]).corr(method='pearson').copy()
 print(bdf)
 #There is infact a high correlation between budget and gross.
 
+#Let's look at the correlation table
 
 correlation_matrix=bdf.corr(method='pearson')
 sns.heatmap(correlation_matrix,annot=True)
