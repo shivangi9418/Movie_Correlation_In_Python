@@ -1,8 +1,8 @@
-# **Introduction**
+# 🎬**Introduction**
 
 This is a data analysis project focused on finding correlations between variables in the movie industry dataset. It harnesses python and its libraries like Pandas,Seaborn, and Matplotlib.
 
-# **Project Overview**
+# 📌**Project Overview**
 
 The project involves the following key steps:
 
@@ -16,22 +16,22 @@ The project involves the following key steps:
   
 * **GitHub Upload:** Posting the finished project on a GitHub repository.
 
-# **Code and its output**
+# 💻**Code and its output**
 
-**1.Data Cleaning**
+**1. 🧹Data Cleaning**
 
-import pandas as pd
-
-import seaborn as sns
-
-import numpy as np
-
-import matplotlib.pyplot as plt
-
-
-df=pd.read_csv('movies.csv')
-
-print(df.head())
+      import pandas as pd
+      
+      import seaborn as sns
+      
+      import numpy as np
+      
+      import matplotlib.pyplot as plt
+      
+      
+      df=pd.read_csv('movies.csv')
+      
+      print(df.head())
 
 **output:**
 | Name                                     | Rating | Genre  | Year | ....... | Released                             | Score | Country        | Budget      | Gross        | Company                | Runtime | Correct Year |
@@ -44,11 +44,11 @@ print(df.head())
 
 #Look for missing data, if any
 
-for col in df.columns:
+    for col in df.columns:
 
-    pct_missing=np.mean(df[col].isnull())
+        pct_missing=np.mean(df[col].isnull())
     
-    print(f'{col} - {pct_missing}%')
+        print(f'{col} - {pct_missing}%')
   
 
 | Column       | Missing Percentage |
@@ -72,11 +72,11 @@ for col in df.columns:
 
 #Changing data type of columns/Type Conversion
 
-df['budget']=pd.to_numeric(df['budget'].astype(int))
-
-df['gross']=pd.to_numeric(df['gross'].astype(int))
-
-print(df.info())
+      df['budget']=pd.to_numeric(df['budget'].astype(int))
+      
+      df['gross']=pd.to_numeric(df['gross'].astype(int))
+      
+      print(df.info())
 
 output:
 
@@ -99,14 +99,14 @@ output:
 
 #Adding new column 'correct_year'
 
-df['correct_year']=df['released'].astype(str).str.split().str[2]
+      df['correct_year']=df['released'].astype(str).str.split().str[2]
 
 
 #Sorting the data wrt gross revenue
 
-df=df.sort_values(by=['gross'],inplace=False,ascending=False)
-
-print(df.head())
+      df=df.sort_values(by=['gross'],inplace=False,ascending=False)
+      
+      print(df.head())
 
 output:
 |      name                                | rating | genre  | year | released                             | score | country        |   budget    |     gross     | company                | runtime | correct_year |
@@ -119,14 +119,14 @@ output:
 
 #Drop any duplicates
 
-df['company'].drop_duplicates().sort_values(ascending=False)
-
-
-df.to_csv('movies.csv',index=False)
-
-print(df)
-
-print(df.info())
+      df['company'].drop_duplicates().sort_values(ascending=False)
+      
+      
+      df.to_csv('movies.csv',index=False)
+      
+      print(df)
+      
+      print(df.info())
 
 output:
 |      name                                | rating | genre    | year | ... |     gross     | company                                      | runtime | correct_year |
@@ -162,22 +162,22 @@ output:
 | 14  | runtime        | 7649 non-null  | float64 |
 | 15  | correct_year   | 7647 non-null  | object  |
 
-**2. Finding Correlations**
+**2. ⚖️Finding Correlations**
 
 
 #Scatter plot with budget vs gross
 
-plt.scatter(x=df['budget'],y=df['gross'])
-
-plt.title('Budget vs Gross Earnings')
-
-plt.xlabel('Budget for Film')
-
-plt.ylabel('Gross Earnings')
-
-plt.grid()
-
-plt.show()
+      plt.scatter(x=df['budget'],y=df['gross'])
+      
+      plt.title('Budget vs Gross Earnings')
+      
+      plt.xlabel('Budget for Film')
+      
+      plt.ylabel('Gross Earnings')
+      
+      plt.grid()
+      
+      plt.show()
 
 output:
 
@@ -185,9 +185,9 @@ output:
 
 #Plot budget vs gross using seaborn
 
-sns.regplot(x='budget',y='gross',data=df,scatter_kws={'color':'red'},line_kws={'color':'purple'})
-
-plt.show()
+    sns.regplot(x='budget',y='gross',data=df,scatter_kws={'color':'red'},line_kws={'color':'purple'})
+    
+    plt.show()
 
 output:
 
@@ -195,9 +195,9 @@ output:
 
 #Let's start looking at correlation
 
-bdf=df.select_dtypes(include=[int,float]).corr(method='pearson').copy()
-
-print(bdf)
+      bdf=df.select_dtypes(include=[int,float]).corr(method='pearson').copy()
+      
+      print(bdf)
 
 output:
 
@@ -212,17 +212,17 @@ output:
 
 #Let's look at the correlation
 
-correlation_matrix=bdf.corr(method='pearson')
-
-sns.heatmap(correlation_matrix,annot=True)
-
-plt.title('Correlation Matric for Numeric Features')
-
-plt.xlabel('Movie Features')
-
-plt.ylabel('Movie Features')
-
-plt.show()
+      correlation_matrix=bdf.corr(method='pearson')
+      
+      sns.heatmap(correlation_matrix,annot=True)
+      
+      plt.title('Correlation Matric for Numeric Features')
+      
+      plt.xlabel('Movie Features')
+      
+      plt.ylabel('Movie Features')
+      
+      plt.show()
 
 output:
 
@@ -230,11 +230,11 @@ output:
 
 #Unstacking and forming pairs
 
-correlation_mat=bdf.corr()
-
-corr_pairs=correlation_mat.unstack()
-
-print(corr_pairs)
+      correlation_mat=bdf.corr()
+      
+      corr_pairs=correlation_mat.unstack()
+      
+      print(corr_pairs)
 
 output:
 
@@ -277,9 +277,9 @@ output:
 |          | gross    | -0.401560   |
 |          | runtime  | 1.000000    |
 
-sorted_pairs=corr_pairs.sort_values()
-
-print(sorted_pairs)
+      sorted_pairs=corr_pairs.sort_values()
+      
+      print(sorted_pairs)
 
 output:
 | Column 1 | Column 2 | Correlation |
@@ -322,9 +322,9 @@ output:
 | runtime  | runtime  | 1.000000    |
 
 #Looking for high correlation pairs
-high_corr=sorted_pairs[(sorted_pairs)>0.5]
-
-print(high_corr)
+      high_corr=sorted_pairs[(sorted_pairs)>0.5]
+      
+      print(high_corr)
 
 output:
 | Column 1 | Column 2 | Correlation |
