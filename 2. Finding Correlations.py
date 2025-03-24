@@ -1,9 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import numpy as np
-import matplotlib.pyplot as plt
-import statsmodels.formula.api as sm
-import statsmodels.api as sa 
+import matplotlib.pyplot as plt 
 
 df=pd.read_csv('movies.csv')
 
